@@ -18,7 +18,7 @@ public:
         Cycloid,
         HuygensCycloid,
         HypoCycloid,
-        FutureShape
+        Line
     };
 
     void setBackgroundColor(QColor color)
@@ -48,7 +48,7 @@ private:
     QPointF compute_cycloid(float t);
     QPointF compute_huygens(float t);
     QPointF compute_hypo(float t);
-    QPointF compute_future_shape(float t);
+    QPointF compute_line(float t);
 
 private:
     QColor mBackgroundColor;
