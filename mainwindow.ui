@@ -96,6 +96,34 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QPushButton" name="btnCircle">
+              <property name="text">
+               <string>Circle</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnEllipse">
+              <property name="text">
+               <string>Ellipse</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnFancyShape">
+              <property name="text">
+               <string>FancyShape</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnStarfish">
+              <property name="text">
+               <string>Starfish</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item row="1" column="0">
@@ -123,6 +151,9 @@
                 <property name="decimals">
                  <number>1</number>
                 </property>
+                <property name="maximum">
+                 <double>150.000000000000000</double>
+                </property>
                </widget>
               </item>
              </layout>
@@ -146,6 +177,9 @@
                 </property>
                 <property name="decimals">
                  <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>150.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -172,7 +206,7 @@
                  </size>
                 </property>
                 <property name="maximum">
-                 <number>512</number>
+                 <number>1024</number>
                 </property>
                 <property name="singleStep">
                  <number>8</number>

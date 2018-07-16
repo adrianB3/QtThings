@@ -14,24 +14,24 @@ RenderArea::RenderArea(QWidget *parent) :
 
 QSize RenderArea::minimumSizeHint() const
 {
-    return QSize(100,400);
+    return QSize(400,400);
 }
 QSize RenderArea::sizeHint() const
 {
-    return QSize(400,400);
+    return QSize(800,600);
 }
 
 void RenderArea::on_shape_changed()
 {
     switch (mShape) {
     case Astroid:
-            mScale = 40;
+            mScale = 90;
             mIntervalLength = 2 * M_PI;
             mStepCount = 256;
         break;
     case Cycloid:
-            mScale = 4;
-            mIntervalLength = 6 * M_PI;
+            mScale = 10;
+            mIntervalLength = 4 * M_PI;
             mStepCount = 128;
         break;
     case HuygensCycloid:
@@ -40,13 +40,33 @@ void RenderArea::on_shape_changed()
             mStepCount = 256;
         break;
     case HypoCycloid:
-            mScale = 15;
+            mScale = 40;
             mIntervalLength = 2 * M_PI;
             mStepCount = 256;
         break;
     case Line:
-            mScale = 50;
-            mIntervalLength = 1;
+            mScale = 100;
+            mIntervalLength = 2;
+            mStepCount = 256;
+        break;
+    case Circle:
+            mScale = 100;
+            mIntervalLength = 2 * M_PI;
+            mStepCount = 128;
+        break;
+    case Ellipse:
+            mScale = 75;
+            mIntervalLength = 2 * M_PI;
+            mStepCount = 256;
+        break;
+    case FancyShape:
+            mScale = 10;
+            mIntervalLength = 12 * M_PI;
+            mStepCount = 512;
+        break;
+    case Starfish:
+            mScale = 25;
+            mIntervalLength = 6 * M_PI;
             mStepCount = 256;
         break;
     default:
@@ -72,6 +92,18 @@ QPointF RenderArea::compute(float t)
         break;
     case Line:
             return compute_line(t);
+        break;
+    case Circle:
+            return compute_circle(t);
+        break;
+    case Ellipse:
+            return compute_ellipse(t);
+        break;
+    case FancyShape:
+            return compute_fancyshape(t);
+        break;
+    case Starfish:
+            return compute_starfish(t);
         break;
     default:
             return QPointF(0,0);
@@ -117,6 +149,36 @@ QPointF RenderArea::compute_line(float t)
     return QPointF (
                 1 - t,
                 1 - t
+                );
+}
+
+QPointF RenderArea::compute_circle(float t)
+{
+    return QPointF (
+                cos(t),
+                sin(t)
+                );
+}
+
+QPointF RenderArea::compute_ellipse(float t)
+{
+    return QPointF (
+                2 * cos(t),
+                1.1 * sin(t)
+                );
+}
+QPointF RenderArea::compute_fancyshape(float t)
+{
+    return QPointF (
+                11.0f * cos(t) - 6.0f * cos((11.0f/6.0f) * t),
+                11.0f * sin(t) - 6.0f * sin((11.0f/6.0f) * t)
+                );
+}
+QPointF RenderArea::compute_starfish(float t)
+{
+    return QPointF (
+                2.0f * cos(t) + 5.0f * cos(2.0f/3.0f * t),
+                2.0f * sin(t) - 5.0f * sin(2.0f/3.0f * t)
                 );
 }
 
